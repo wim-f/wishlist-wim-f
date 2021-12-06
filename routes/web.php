@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Wishlist;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +18,26 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('posts', [PostController::class,'index'])->name('posts.index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+Route::get('/home', function () {
+    return view('home');
+});
+
+Route::get('/wishlist', function () {
+    return view('wishlist',[
+        'items' => Wishlist::all()
+    ]);
+});
+
+Route::get('/wishlist/{item}', function (Wishlist $item) {
+    return view('item', [
+        'item' => $item
+    ]);
+});
+
+require __DIR__ . '/auth.php';
