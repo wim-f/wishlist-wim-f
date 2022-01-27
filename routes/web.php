@@ -34,10 +34,6 @@ Route::get('/wishlist', function () {
     ]);
 });
 
-Route::get('/wishlist/{item}', function (Wishlist $item) {
-    return view('item', [
-        'item' => $item
-    ]);
-});
+Route::get("item/{id}", [PostController::class,'show']);
 
 require __DIR__ . '/auth.php';

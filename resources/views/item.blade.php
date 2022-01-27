@@ -3,9 +3,9 @@
 @section('content')
 
         <article>
-            <p>{{ $item->naam }}</p>
+            <p>{{ $item->title }}</p>
             <p>{{ $item->plaatje }}</p>
-            <p>{{ $item->beschrijving }}</p>
+            <p>{{ $item->description }}</p>
             <a href="{{ $item->link_to_site }}">{{ $item->prijs }}</a>
         </article>
 
